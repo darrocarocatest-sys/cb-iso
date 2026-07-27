@@ -28,7 +28,6 @@ jobs:
           ghtok: ${{ github.token }}
           mainkey: cbmain-${{ steps.n.outputs.n }}
           mainver: '5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08'
-          mainver: '5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08'
       - run: rm -rf cachedir
       - name: read direction - restore what main wrote
         id: rd
