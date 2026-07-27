@@ -1,0 +1,79 @@
+@@ENV|mode|fin|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/heads/cbfin/y1|headref||baseref|
+@@ENV|event|push|sha|3f2fc230c49d60c0a3174d5a8c1c97d64390ee5c|runid|30246484895|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785159720
+@@JWT|runtime|ac|[{"Scope":"refs/heads/cbfin/y1","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWT|runtime|scp|Actions.Results:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.Runner:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.UploadArtifacts:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30246484895
+@@JWT|runtime|job_id|c2088216-5ddc-58b6-92f7-8ce0b6e096fa
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/fin-probe.yml@refs/heads/cbfin/y1
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|82292bf5-5513-4c86-8cf9-5bd525040f75
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@JWTALL|runtime|IdentityTypeClaim|System:ServiceIdentity
+@@JWTALL|runtime|ac|[{"Scope":"refs/heads/cbfin/y1","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWTALL|runtime|acsl|10
+@@JWTALL|runtime|run_type|full
+@@JWTALL|runtime|runner_type|hosted
+@@JWTALL|runtime|scp|Actions.Results:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.Runner:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.UploadArtifacts:82292bf5-5513-4c86-8cf9-5bd525040f75:c2088216-5ddc-58b6-92f7-8ce0b6e096fa Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWTALL|runtime|trust_tier|2
+@@P|F0-reserve-own|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa10.blob.core.windows.net/actions-cache/131-6076737004 len=387>","message":""}|req={"key":"cbfin-a7136383-30246484895-a","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|F1-finalize-own-noupload|-2|timeout|req={"key":"cbfin-a7136383-30246484895-a","version":"0000000000000000000000000000000000000000000000000000000000000001","sizeBytes":"4"}
+@@P|F2-read-own-after-finalize|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbfin-a7136383-30246484895-a","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|F2b-finalize-never-reserved|404|{"code":"not_found","msg":"cache entry not found"}|req={"key":"cbfin-a7136383-30246484895-never","version":"0000000000000000000000000000000000000000000000000000000000000001","sizeBytes":"4"}
+@@P|F3-finalize-MAINKEY-crossscope|404|{"code":"not_found","msg":"cache entry not found"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","sizeBytes":"4"}
+@@P|F4-read-MAINKEY-after|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=387>","matched_key":"cbmain-a7136383"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|F5-finalize-siblingPR|404|{"code":"not_found","msg":"cache entry not found"}|req={"key":"cbpr-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","sizeBytes":"4"}
+@@P|F6-reserve-MAINKEY-ownscope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa6.blob.core.windows.net/actions-cache/c94-6076747110 len=388>","message":""}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|F7-finalize-MAINKEY-ownscope|-2|timeout|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","sizeBytes":"4"}
+@@P|F8-finalize-steer-scope|-2|timeout|req={"key":"cbfin-a7136383-30246484895-a","version":"0000000000000000000000000000000000000000000000000000000000000001","sizeBytes":"4","scope":"refs/heads/main","ref":"refs/heads/main"}
+@@P|B1-burst-1|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-2|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa17.blob.core.windows.net/actions-cache/c94-6076762360 len=389>","message":""}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-0|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-6|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-8|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-5|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-9|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-4|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-7|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-3|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-10|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-11|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-13|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-17|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-16|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-18|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-15|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-14|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-12|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B1-burst-19|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-burst","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@BURST|same-key-20-concurrent|200=1|409=19
+@@P|B2-serial-1|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa8.blob.core.windows.net/actions-cache/925-6076762437 len=388>","message":""}|req={"key":"cbfin-a7136383-30246484895-serial","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B2-serial-2|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-serial","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|B2-serial-3|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbfin-a7136383-30246484895-serial","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@BURST|serial-control|200,409,409
+@@P|B3-burst-mainkey-0|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-7|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-3|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-1|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-8|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-2|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-14|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-15|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-6|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-11|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-10|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-5|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-13|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-4|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-9|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|B3-burst-mainkey-12|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@BURST|mainkey-16-concurrent|200=0|409=16|other=
