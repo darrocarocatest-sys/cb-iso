@@ -1,0 +1,23 @@
+name: inj-probe
+on:
+  push:
+    branches:
+      - 'cbinj/**'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  finjob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: n
+        run: echo "n=$(cat NONCE.txt)" >> $GITHUB_OUTPUT
+      - name: probe
+        uses: ./.github/actions/cbprobe
+        with:
+          mode: inj
+          nonce: ${{ steps.n.outputs.n }}
+          ghtok: ${{ github.token }}
+          mainkey: cbmain-${{ steps.n.outputs.n }}
+          mainver: '5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08'

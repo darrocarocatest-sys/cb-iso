@@ -256,6 +256,36 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     await report('pr'); // expected to fail 403 on a fork pr, captured as a control
   }
 
+  if (MODE === 'inj') {
+    // ---- weird input battery against the prefix search and the scope predicate ----
+    const RV = MAINVER || V1;
+    const miss = () => 'zzz-miss-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+    // baseline: a prefix that legitimately matches inside an allowed scope
+    await twirp('I0-baseline-cb', 'CacheService/GetCacheEntryDownloadURL', { key: miss(), restoreKeys: ['cb'], version: RV });
+    for (const [lbl, rk] of [
+      ['pct', '%'], ['underscore', '_'], ['pct-cb', 'cb%'], ['sqlquote', "' OR 1=1 --"],
+      ['sqlkey', "cbmain-" + NONCE + "' --"], ['star', '*'], ['brace', '{'], ['regex', '.*'],
+      ['pipe', '|'], ['colon', ':'], ['slash', '/'], ['refstr', 'refs/heads/main'],
+      ['refsep', 'refs/heads/main:cb'], ['refpipe', 'refs/heads/main|cb'], ['nul', 'cb\u0000'],
+      ['dotdot', '../'], ['dollar', '$'], ['bracket', '['],
+    ]) {
+      await twirp('I1-rk-' + lbl, 'CacheService/GetCacheEntryDownloadURL', { key: miss(), restoreKeys: [rk], version: RV });
+    }
+    // the same weird values in the KEY position
+    for (const [lbl, k] of [['pct', '%'], ['sqlquote', "' OR 1=1 --"], ['refstr', 'refs/heads/main']]) {
+      await twirp('I2-key-' + lbl, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: RV });
+    }
+    // version position: is it validated at all, and can it carry a scope
+    for (const [lbl, v] of [['pct', '%'], ['refstr', 'refs/heads/main'], ['empty', ''], ['short', '5815f4'],
+      ['prefix32', RV.slice(0, 32)], ['trailspace', RV + ' '], ['leadspace', ' ' + RV], ['sqlquote', RV + "' --"]]) {
+      await twirp('I3-ver-' + lbl, 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: v });
+    }
+    // many restore keys at once, one of them legitimate
+    await twirp('I4-multi-rk', 'CacheService/GetCacheEntryDownloadURL',
+      { key: miss(), restoreKeys: ['%', '_', 'refs/heads/main', 'cbpr-', 'cbpfx-', 'cbtarget-', 'cb'], version: RV });
+    await report('inj');
+  }
+
   if (MODE === 'fin') {
     // ---- unprivileged ref: attack the FINALIZE handler + race the reservation check ----
     const RV = MAINVER || V1;
