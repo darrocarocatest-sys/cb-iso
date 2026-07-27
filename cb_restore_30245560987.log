@@ -1,0 +1,7 @@
+A poscontrol-main-own hit=true matched=cbmain-a7136383 content=MAIN-CONTENT-MARKER-a7136383 repo=darrocarocatest-sys/cb-iso ref=refs/heads/main run=30245361654
+B probe-branch-exact hit= matched= content=NONE
+C probe-branch-prefix hit= matched= content=NONE
+D probe-forkpr-exact hit= matched= content=NONE
+E probe-forkpr-prefix hit= matched= content=NONE
+F negcontrol-never hit= matched= content=NONE
+G probe-broadprefix hit=false matched=cbmain-a7136383 content=MAIN-CONTENT-MARKER-a7136383 repo=darrocarocatest-sys/cb-iso ref=refs/heads/main run=30245361654
