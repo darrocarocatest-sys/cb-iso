@@ -201,6 +201,15 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     ]) {
       await twirp('PR-hdr-' + nm, 'CacheService/CreateCacheEntry', { key: K('h-' + nm), version: V1 }, { hdr });
     }
+    // 4b. COLLISION DISCRIMINANT: reserve the default branch's OWN key at its OWN version.
+    //     A 409 here means this unprivileged ref shares a uniqueness scope with the default
+    //     branch. Control: an unrelated branch name returns 200 on the same call.
+    if (MAINKEY && MAINVER) {
+      await twirp('PR-COLLIDE-reserve-mainkey-mainver', 'CacheService/CreateCacheEntry', { key: MAINKEY, version: MAINVER });
+      await twirp('PR-COLLIDE-reserve-mainkey-uppercase', 'CacheService/CreateCacheEntry', { key: MAINKEY.toUpperCase(), version: MAINVER });
+      await twirp('PR-COLLIDE-read-mainkey-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY.toUpperCase(), version: MAINVER });
+      await twirp('PR-COLLIDE-read-mainver-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER.toUpperCase() });
+    }
     // 5. read direction: documented as allowed (pr can restore from the base default branch)
     if (MAINKEY) {
       await twirp('PR-read-mainkey-exact', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER || V1 });
