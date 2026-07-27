@@ -210,6 +210,24 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
       await twirp('PR-COLLIDE-read-mainkey-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY.toUpperCase(), version: MAINVER });
       await twirp('PR-COLLIDE-read-mainver-uppercase', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER.toUpperCase() });
     }
+    // 4c. SIBLING SCOPE READS. Every key below is committed and owned by a scope that is
+    //     NOT this job's own scope and NOT the base default branch. Documented model says
+    //     a run reaches only its own ref plus the base/default ref.
+    const RV2 = MAINVER || V1;
+    for (const [lbl, k] of [
+      ['siblingPR', 'cbpr-' + NONCE + '-exact'],
+      ['siblingBranch', 'cbtarget-' + NONCE + '-exact'],
+      ['siblingEvil', 'cbpfx-' + NONCE + '-exact'],
+      ['poscontrol-base', MAINKEY],
+      ['negcontrol-never', 'cbnever-' + NONCE],
+    ]) {
+      if (k) await twirp('SIB-' + lbl, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: RV2 });
+    }
+    // prefix search: which scopes does the server actually search?
+    for (const [lbl, rk] of [['pfx-cbpr', 'cbpr-'], ['pfx-cbtarget', 'cbtarget-'], ['pfx-cbpfx', 'cbpfx-'], ['pfx-broad', 'cb'], ['pfx-empty', '']]) {
+      await twirp('SIB-' + lbl, 'CacheService/GetCacheEntryDownloadURL',
+        { key: 'zzz-miss-' + NONCE + '-' + lbl, restoreKeys: [rk], version: RV2 });
+    }
     // 5. read direction: documented as allowed (pr can restore from the base default branch)
     if (MAINKEY) {
       await twirp('PR-read-mainkey-exact', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER || V1 });
