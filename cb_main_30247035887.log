@@ -1,0 +1,33 @@
+@@ENV|mode|main|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/heads/main|headref||baseref|
+@@ENV|event|workflow_dispatch|sha|3328d18a73a3564de4d8ec26894ae27124d079c6|runid|30247035887|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,oidc_extra,oidc_sub,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785160272
+@@JWT|runtime|ac|[{"Scope":"refs/heads/main","Permission":3}]
+@@JWT|runtime|scp|Actions.Results:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.Runner:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.UploadArtifacts:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 generate_id_token:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30247035887
+@@JWT|runtime|job_id|53a73c34-bd58-53f8-958f-6311745beab9
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/save-main.yml@refs/heads/main
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|55ebab51-9723-41fe-adbe-47effadfad6e
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@JWTALL|runtime|IdentityTypeClaim|System:ServiceIdentity
+@@JWTALL|runtime|ac|[{"Scope":"refs/heads/main","Permission":3}]
+@@JWTALL|runtime|acsl|10
+@@JWTALL|runtime|oidc_extra|{"actor":"darrocarocatest-sys","actor_id":"289652180","base_ref":"","check_run_id":"89916304753","event_name":"workflow_dispatch","head_ref":"","job_workflow_ref":"darrocarocatest-sys/cb-iso/.github/workflows/save-main.yml@refs/heads/main","job_workflow_sha":"3328d18a73a3564de4d8ec26894ae27124d079c6","ref":"refs/heads/main","ref_protected":"false","ref_type":"branch","repository":"darrocarocatest-sys/cb-iso","repository_id":"1313533001","repository_owner":"darrocarocatest-sys","repository_owner_id":"289652180","repository_visibility":"public","run_attempt":"1","run_id":"30247035887","run_number":"2","runner_environment":"github-hosted","sha":"3328d18a73a3564de4d8ec26894ae27124d079c6","workflow":"save-main","workflow_ref":"darrocarocatest-sys/cb-iso/.github/workflows/save-main.yml@refs/heads/main","workflow_sha":"3328d18a73a3564de4d8ec26894ae27124d079c6"}
+@@JWTALL|runtime|run_type|full
+@@JWTALL|runtime|runner_type|hosted
+@@JWTALL|runtime|scp|Actions.Results:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.Runner:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.UploadArtifacts:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 generate_id_token:55ebab51-9723-41fe-adbe-47effadfad6e:53a73c34-bd58-53f8-958f-6311745beab9 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWTALL|runtime|trust_tier|2
+@@P|MAIN-create-fresh|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-raw-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-create-fresh-again|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-raw-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-read-neverwritten|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-read-mainkey|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbmain-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@GH|MAIN-list-caches|200|{"total_count":25,"actions_caches":[{"id":6076952726,"ref":"refs/heads/main","key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","last_accessed_at":"2026-07-27T07:41:16.406047000Z","created_at":"2026-07-27T07:41:16.406047000Z","size_in_bytes":326},{"id":6076676252,"ref":"refs/pull/3/merge","key":"cbacpr-a7136383-W3siU2NvcGUiOiJyZWZzL3B1bGwvMy9tZXJnZSIsIlBlcm1pc3Npb24iO
