@@ -15,8 +15,8 @@ jobs:
         run: |
           N="$(cat NONCE.txt)"
           echo "n=$N" >> $GITHUB_OUTPUT
-          mkdir -p cachedir
-          echo "BRANCH-CONTENT-MARKER-$N repo=${{ github.repository }} ref=${{ github.ref }} run=${{ github.run_id }}" > cachedir/marker.txt
+          mkdir -p mine
+          echo "BRANCH-CONTENT-MARKER-$N repo=${{ github.repository }} ref=${{ github.ref }} run=${{ github.run_id }}" > mine/marker.txt
       - name: probe
         id: p
         uses: ./.github/actions/cbprobe
@@ -25,16 +25,19 @@ jobs:
           nonce: ${{ steps.n.outputs.n }}
           ghtok: ${{ github.token }}
           mainkey: cbmain-${{ steps.n.outputs.n }}
-      - name: restore what main wrote (read direction)
+          mainver: '5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08'
+      - run: rm -rf cachedir
+      - name: read direction - restore what main wrote
         id: rd
         uses: actions/cache/restore@v4
         continue-on-error: true
         with:
-          path: cachedir2
+          path: cachedir
           key: cbmain-${{ steps.n.outputs.n }}
-      - run: 'echo "READ-MAIN-HIT=${{ steps.rd.outputs.cache-hit }}"; cat cachedir2/marker.txt 2>/dev/null || echo NO-CONTENT'
+      - run: 'echo "READ-MAIN-HIT=${{ steps.rd.outputs.cache-hit }} matched=${{ steps.rd.outputs.cache-matched-key }}"; cat cachedir/marker.txt 2>/dev/null || echo NO-CONTENT'
         continue-on-error: true
-      - name: write the key the privileged main job will ask for (exact)
+      - run: rm -rf cachedir; cp -r mine cachedir; cat cachedir/marker.txt
+      - name: write the exact key the privileged main job will ask for
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
