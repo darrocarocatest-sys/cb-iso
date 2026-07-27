@@ -256,6 +256,49 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     await report('pr'); // expected to fail 403 on a fork pr, captured as a control
   }
 
+  if (MODE === 'fin') {
+    // ---- unprivileged ref: attack the FINALIZE handler + race the reservation check ----
+    const RV = MAINVER || V1;
+    const U = 'cbfin-' + NONCE + '-' + (E.GITHUB_RUN_ID || '0');
+    const T = 20000;
+    // positive controls: what does finalize do for an entry we legitimately reserved?
+    await twirp('F0-reserve-own', 'CacheService/CreateCacheEntry', { key: U + '-a', version: V1 }, { timeout: T });
+    await twirp('F1-finalize-own-noupload', 'CacheService/FinalizeCacheEntryUpload', { key: U + '-a', version: V1, sizeBytes: '4' }, { timeout: T });
+    await twirp('F2-read-own-after-finalize', 'CacheService/GetCacheEntryDownloadURL', { key: U + '-a', version: V1 }, { timeout: T });
+    // negative control: finalize a key nobody ever reserved
+    await twirp('F2b-finalize-never-reserved', 'CacheService/FinalizeCacheEntryUpload', { key: U + '-never', version: V1, sizeBytes: '4' }, { timeout: T });
+    // CROSS SCOPE: finalize an entry that belongs to the default branch scope
+    await twirp('F3-finalize-MAINKEY-crossscope', 'CacheService/FinalizeCacheEntryUpload', { key: MAINKEY, version: RV, sizeBytes: '4' }, { timeout: T });
+    await twirp('F4-read-MAINKEY-after', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: RV }, { timeout: T });
+    // CROSS SCOPE: finalize an entry owned by a sibling pull request scope
+    await twirp('F5-finalize-siblingPR', 'CacheService/FinalizeCacheEntryUpload', { key: 'cbpr-' + NONCE + '-exact', version: RV, sizeBytes: '4' }, { timeout: T });
+    // reserve the default branch key inside our own scope, then finalize it
+    await twirp('F6-reserve-MAINKEY-ownscope', 'CacheService/CreateCacheEntry', { key: MAINKEY, version: RV }, { timeout: T });
+    await twirp('F7-finalize-MAINKEY-ownscope', 'CacheService/FinalizeCacheEntryUpload', { key: MAINKEY, version: RV, sizeBytes: '4' }, { timeout: T });
+    // finalize carrying scope steering fields
+    await twirp('F8-finalize-steer-scope', 'CacheService/FinalizeCacheEntryUpload',
+      { key: U + '-a', version: V1, sizeBytes: '4', scope: 'refs/heads/main', ref: 'refs/heads/main' }, { timeout: T });
+    // ---- BURST on the reservation check-then-act (concurrent), then a serial control ----
+    const bk = U + '-burst';
+    const burst = [];
+    for (let i = 0; i < 20; i++) burst.push(twirp('B1-burst-' + i, 'CacheService/CreateCacheEntry', { key: bk, version: V1 }, { timeout: T }));
+    const bres = await Promise.all(burst);
+    const ok200 = bres.filter(r => r && r.status === 200).length, c409 = bres.filter(r => r && r.status === 409).length;
+    L('@@BURST|same-key-20-concurrent|200=' + ok200 + '|409=' + c409);
+    const sk = U + '-serial';
+    const s1 = await twirp('B2-serial-1', 'CacheService/CreateCacheEntry', { key: sk, version: V1 }, { timeout: T });
+    const s2 = await twirp('B2-serial-2', 'CacheService/CreateCacheEntry', { key: sk, version: V1 }, { timeout: T });
+    const s3 = await twirp('B2-serial-3', 'CacheService/CreateCacheEntry', { key: sk, version: V1 }, { timeout: T });
+    L('@@BURST|serial-control|' + [s1, s2, s3].map(r => r ? r.status : 'x').join(','));
+    // burst the DEFAULT BRANCH key+version from this unprivileged scope
+    const burst2 = [];
+    for (let i = 0; i < 16; i++) burst2.push(twirp('B3-burst-mainkey-' + i, 'CacheService/CreateCacheEntry', { key: MAINKEY, version: RV }, { timeout: T }));
+    const b2res = await Promise.all(burst2);
+    L('@@BURST|mainkey-16-concurrent|200=' + b2res.filter(r => r && r.status === 200).length + '|409=' + b2res.filter(r => r && r.status === 409).length +
+      '|other=' + b2res.filter(r => r && r.status !== 200 && r.status !== 409).map(r => r.status).join(','));
+    await report('fin');
+  }
+
   if (MODE === 'conflict') {
     // ---- privileged default-branch 409 oracle -----------------------------------
     // every key below was FIRST-TOUCHED by an unprivileged ref. 409 here means that
