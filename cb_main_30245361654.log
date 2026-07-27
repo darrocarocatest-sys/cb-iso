@@ -1,0 +1,25 @@
+@@ENV|mode|main|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/heads/main|headref||baseref|
+@@ENV|event|workflow_dispatch|sha|f6fd6525d57d17f23e29ebb9db9532979318a81e|runid|30245361654|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,oidc_extra,oidc_sub,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785158612
+@@JWT|runtime|ac|[{"Scope":"refs/heads/main","Permission":3}]
+@@JWT|runtime|scp|Actions.Results:b072487e-df21-49d5-8f86-2c078f069910:c5e61f66-d507-5f56-91d0-e25472730208 Actions.Runner:b072487e-df21-49d5-8f86-2c078f069910:c5e61f66-d507-5f56-91d0-e25472730208 Actions.UploadArtifacts:b072487e-df21-49d5-8f86-2c078f069910:c5e61f66-d507-5f56-91d0-e25472730208 generate_id_token:b072487e-df21-49d5-8f86-2c078f069910:c5e61f66-d507-5f56-91d0-e25472730208 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30245361654
+@@JWT|runtime|job_id|c5e61f66-d507-5f56-91d0-e25472730208
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/save-main.yml@refs/heads/main
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|b072487e-df21-49d5-8f86-2c078f069910
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@P|MAIN-create-fresh|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/8c5-6076271908 len=389>","message":""}|req={"key":"cbmain-raw-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-create-fresh-again|409|{"code":"already_exists","msg":"cache entry with the same key, version, and scope already exists"}|req={"key":"cbmain-raw-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-read-neverwritten|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|MAIN-read-mainkey|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbmain-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@GH|MAIN-list-caches|200|{"total_count":1,"actions_caches":[{"id":6076271791,"ref":"refs/heads/main","key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","last_accessed_at":"2026-07-27T07:13:34.791046000Z","created_at":"2026-07-27T07:13:34.791046000Z","size_in_bytes":333}]}
