@@ -1,0 +1,35 @@
+name: save-main
+on:
+  workflow_dispatch:
+    inputs:
+      nonce:
+        required: false
+        default: ''
+permissions:
+  contents: write
+  actions: write
+  id-token: write
+jobs:
+  mainjob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: n
+        run: |
+          N="${{ inputs.nonce }}"; [ -z "$N" ] && N="$(cat NONCE.txt)"
+          echo "n=$N" >> $GITHUB_OUTPUT
+          mkdir -p cachedir
+          echo "MAIN-CONTENT-MARKER-$N repo=${{ github.repository }} ref=${{ github.ref }} run=${{ github.run_id }}" > cachedir/marker.txt
+      - name: save main cache (positive control write)
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbmain-${{ steps.n.outputs.n }}
+      - name: probe
+        uses: ./.github/actions/cbprobe
+        with:
+          mode: main
+          nonce: ${{ steps.n.outputs.n }}
+          ghtok: ${{ github.token }}
+          mainkey: cbmain-${{ steps.n.outputs.n }}

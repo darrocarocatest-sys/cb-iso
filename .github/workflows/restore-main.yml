@@ -1,0 +1,97 @@
+name: restore-main
+on:
+  workflow_dispatch:
+    inputs:
+      nonce:
+        required: false
+        default: ''
+      probekeys:
+        required: false
+        default: ''
+permissions:
+  contents: write
+  actions: write
+  id-token: write
+jobs:
+  restorejob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: n
+        run: |
+          N="${{ inputs.nonce }}"; [ -z "$N" ] && N="$(cat NONCE.txt)"
+          echo "n=$N" >> $GITHUB_OUTPUT
+      - name: A positive control - restore main own entry
+        id: c1
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbmain-${{ steps.n.outputs.n }}
+      - name: B probe - restore the exact key only the unprivileged job wrote
+        id: c2
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: c2dir
+          key: cbtarget-${{ steps.n.outputs.n }}-exact
+      - name: C probe - restore-keys prefix fallback onto the unprivileged bait
+        id: c3
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: c3dir
+          key: zzz-no-such-key-${{ steps.n.outputs.n }}
+          restore-keys: |
+            cbtarget-${{ steps.n.outputs.n }}-
+      - name: D probe - fork pull request exact key
+        id: c4
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: c4dir
+          key: cbpr-${{ steps.n.outputs.n }}-exact
+      - name: E probe - restore-keys prefix fallback onto the fork bait
+        id: c5
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: c5dir
+          key: zzz-no-such-key2-${{ steps.n.outputs.n }}
+          restore-keys: |
+            cbpr-${{ steps.n.outputs.n }}-
+      - name: F negative control - key nobody ever wrote
+        id: c6
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: c6dir
+          key: cbnever-${{ steps.n.outputs.n }}
+      - name: collect
+        run: |
+          {
+          echo "A poscontrol-main hit=${{ steps.c1.outputs.cache-hit }} matched=${{ steps.c1.outputs.cache-matched-key }}"
+          echo "   content: $(cat cachedir/marker.txt 2>/dev/null || echo NONE)"
+          echo "B probe-branch-exact hit=${{ steps.c2.outputs.cache-hit }} matched=${{ steps.c2.outputs.cache-matched-key }}"
+          echo "   content: $(cat c2dir/marker.txt 2>/dev/null || echo NONE)"
+          echo "C probe-branch-prefix hit=${{ steps.c3.outputs.cache-hit }} matched=${{ steps.c3.outputs.cache-matched-key }}"
+          echo "   content: $(cat c3dir/marker.txt 2>/dev/null || echo NONE)"
+          echo "D probe-forkpr-exact hit=${{ steps.c4.outputs.cache-hit }} matched=${{ steps.c4.outputs.cache-matched-key }}"
+          echo "   content: $(cat c4dir/marker.txt 2>/dev/null || echo NONE)"
+          echo "E probe-forkpr-prefix hit=${{ steps.c5.outputs.cache-hit }} matched=${{ steps.c5.outputs.cache-matched-key }}"
+          echo "   content: $(cat c5dir/marker.txt 2>/dev/null || echo NONE)"
+          echo "F negcontrol-never hit=${{ steps.c6.outputs.cache-hit }} matched=${{ steps.c6.outputs.cache-matched-key }}"
+          echo "   content: $(cat c6dir/marker.txt 2>/dev/null || echo NONE)"
+          } | tee /tmp/restore.txt
+          curl -sS -X PUT -H "Authorization: Bearer ${{ github.token }}" -H "X-HackerOne: larocas" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/contents/cb_restore_${{ github.run_id }}.log" \
+            -d "$(python3 -c "import json,base64,sys;print(json.dumps({'message':'lane a7 restore','content':base64.b64encode(open('/tmp/restore.txt','rb').read()).decode()}))")" -o /dev/null -w "putcontents=%{http_code}\n"
+      - name: probe
+        uses: ./.github/actions/cbprobe
+        with:
+          mode: restore
+          nonce: ${{ steps.n.outputs.n }}
+          ghtok: ${{ github.token }}
+          mainkey: cbmain-${{ steps.n.outputs.n }}
+          probekey: ${{ inputs.probekeys }}

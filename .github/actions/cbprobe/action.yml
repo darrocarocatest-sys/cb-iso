@@ -1,0 +1,24 @@
+name: cbprobe
+description: in-job Actions cache scope probe (branch isolation)
+inputs:
+  mode:
+    required: true
+    default: 'pr'
+  nonce:
+    required: false
+    default: ''
+  ghtok:
+    required: false
+    default: ''
+  mainkey:
+    required: false
+    default: ''
+  mainver:
+    required: false
+    default: ''
+  probekey:
+    required: false
+    default: ''
+runs:
+  using: node20
+  main: index.js
