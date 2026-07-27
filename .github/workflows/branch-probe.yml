@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'cbfeat/**'
+      - 'main-**'
+      - 'MAIN'
 permissions:
   contents: write
   actions: read
@@ -43,13 +45,13 @@ jobs:
         continue-on-error: true
         with:
           path: cachedir
-          key: cbtarget-${{ steps.n.outputs.n }}-exact
+          key: cbpfx-${{ steps.n.outputs.n }}-exact
       - name: write a prefix bait for the main job restore-keys fallback
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: cachedir
-          key: cbtarget-${{ steps.n.outputs.n }}-bait
+          key: cbpfx-${{ steps.n.outputs.n }}-bait
       - name: overwrite the key main already owns
         uses: actions/cache/save@v4
         continue-on-error: true
@@ -61,4 +63,4 @@ jobs:
         continue-on-error: true
         with:
           path: cachedir
-          key: cbac-${{ steps.n.outputs.n }}-${{ steps.p.outputs.ac }}
+          key: cbacpfx-${{ steps.n.outputs.n }}-${{ steps.p.outputs.ac }}
