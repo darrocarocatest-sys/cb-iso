@@ -1,0 +1,65 @@
+@@ENV|mode|pr|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/heads/cbfeat/x2|headref||baseref|
+@@ENV|event|push|sha|11b1b1f43405e0e1c2ba6d406e0a77d0f54ea096|runid|30246297504|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785159531
+@@JWT|runtime|ac|[{"Scope":"refs/heads/cbfeat/x2","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWT|runtime|scp|Actions.Results:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.Runner:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.UploadArtifacts:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30246297504
+@@JWT|runtime|job_id|e7333f5b-2819-504e-b372-0be0ff582036
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/branch-probe.yml@refs/heads/cbfeat/x2
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|e48d1f7b-9c02-46ae-82fe-a14ee1affedb
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@JWTALL|runtime|IdentityTypeClaim|System:ServiceIdentity
+@@JWTALL|runtime|ac|[{"Scope":"refs/heads/cbfeat/x2","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWTALL|runtime|acsl|10
+@@JWTALL|runtime|run_type|full
+@@JWTALL|runtime|runner_type|hosted
+@@JWTALL|runtime|scp|Actions.Results:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.Runner:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.UploadArtifacts:e48d1f7b-9c02-46ae-82fe-a14ee1affedb:e7333f5b-2819-504e-b372-0be0ff582036 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWTALL|runtime|trust_tier|2
+@@P|PR-legacy-get-mainkey|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0tQhnagAAAADnKTeaHpyfToy4g9rQZus+UEhMMzBFREdFMDIwOABFZGdl
+@@P|PR-legacy-reserve|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0tQhnagAAAABuvXxVf8ymRbRFcp4fCgbjUEhMMzBFREdFMDIwOABFZGdl
+@@P|PR-legacy-reserve-scoped|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0tQhnagAAAABQWe20nyNRQapwTlcstDxzUEhMMzBFREdFMDIwOABFZGdl
+@@P|PR-create-plain|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa7.blob.core.windows.net/actions-cache/7a8-6076662110 len=386>","message":""}|req={"key":"cbfork-plain-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-steer-scope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa2.blob.core.windows.net/actions-cache/c76-6076662119 len=386>","message":""}|req={"key":"cbfork-st-scope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scope":"refs/heads/main"}
+@@P|PR-steer-ref|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa0.blob.core.windows.net/actions-cache/fb4-6076662131 len=388>","message":""}|req={"key":"cbfork-st-ref-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","ref":"refs/heads/main"}
+@@P|PR-steer-cacheScope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa12.blob.core.windows.net/actions-cache/a4a-6076662150 len=387>","message":""}|req={"key":"cbfork-st-cacheScope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","cacheScope":"refs/heads/main"}
+@@P|PR-steer-branch|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa9.blob.core.windows.net/actions-cache/21b-6076662162 len=386>","message":""}|req={"key":"cbfork-st-branch-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","branch":"main"}
+@@P|PR-steer-gitRef|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa15.blob.core.windows.net/actions-cache/563-6076662168 len=395>","message":""}|req={"key":"cbfork-st-gitRef-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","gitRef":"refs/heads/main"}
+@@P|PR-steer-scopeRef|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa2.blob.core.windows.net/actions-cache/2bb-6076662178 len=388>","message":""}|req={"key":"cbfork-st-scopeRef-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scopeRef":"refs/heads/main"}
+@@P|PR-steer-restoreKeys|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/db6-6076662190 len=387>","message":""}|req={"key":"cbfork-st-restoreKeys-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","restoreKeys":["refs/heads/main"]}
+@@P|PR-steer-permission|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa18.blob.core.windows.net/actions-cache/687-6076662204 len=391>","message":""}|req={"key":"cbfork-st-permission-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","permission":3}
+@@P|PR-steer-workflowRunBackendId|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa17.blob.core.windows.net/actions-cache/c96-6076662217 len=391>","message":""}|req={"key":"cbfork-st-workflowRunBackendId-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","workflowRunBackendId":"00000000-0000-0000-0000-000000000000"}
+@@P|PR-steer-scope-ct-json-utf8|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa3.blob.core.windows.net/actions-cache/36f-6076662229 len=392>","message":""}|req={"key":"cbfork-st-ctj-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scope":"refs/heads/main"}
+@@P|PR-hdr-x-scope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa14.blob.core.windows.net/actions-cache/ab3-6076662236 len=389>","message":""}|req={"key":"cbfork-h-x-scope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-hdr-x-ref|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa13.blob.core.windows.net/actions-cache/59c-6076662247 len=393>","message":""}|req={"key":"cbfork-h-x-ref-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-hdr-x-branch|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa11.blob.core.windows.net/actions-cache/c4e-6076662259 len=395>","message":""}|req={"key":"cbfork-h-x-branch-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-COLLIDE-reserve-mainkey-mainver|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa0.blob.core.windows.net/actions-cache/8cc-6076662262 len=392>","message":""}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-reserve-mainkey-uppercase|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/8f6-6076662279 len=392>","message":""}|req={"key":"CBMAIN-A7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-read-mainkey-uppercase|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"CBMAIN-A7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-read-mainver-uppercase|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=387>","matched_key":"cbmain-a7136383"}|req={"key":"cbmain-a7136383","version":"5815F4CADE2696C8503FEE1D72B56E6A4771A264CC2753C24C189700109B0E08"}
+@@P|SIB-siblingPR|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbpr-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-siblingBranch|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbtarget-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-siblingEvil|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbpfx-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-poscontrol-base|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=389>","matched_key":"cbmain-a7136383"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-negcontrol-never|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbpr|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbpr","restoreKeys":["cbpr-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbtarget|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbtarget","restoreKeys":["cbtarget-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbpfx|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbpfx","restoreKeys":["cbpfx-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-broad|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=385>","matched_key":"cbmain-a7136383"}|req={"key":"zzz-miss-a7136383-pfx-broad","restoreKeys":["cb"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-empty|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=385>","matched_key":"cbmain-a7136383"}|req={"key":"zzz-miss-a7136383-pfx-empty","restoreKeys":[""],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-mainkey-exact|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=389>","matched_key":"cbmain-a7136383"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-mainkey-restorekeys|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/13f-6076271791 len=389>","matched_key":"cbmain-a7136383"}|req={"key":"zzz-no-such-a7136383","restoreKeys":["cbmain-a7136"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-neverwritten|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@GH|PR-del-bykey|403|{"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key","status":"403"}
+@@GH|PR-list-caches|200|{"total_count":16,"actions_caches":[{"id":6076271791,"ref":"refs/heads/main","key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","last_accessed_at":"2026-07-27T07:28:54.171986000Z","created_at":"2026-07-27T07:13:34.791046000Z","size_in_bytes":333},{"id":6076604714,"ref":"refs/heads/MAIN","key":"cbacpfx-a7136383-W3siU2NvcGUiOiJyZWZzL2hlYWRzL01BSU4iLCJQZXJtaXNzaW9uIjozfS
+@@P|PR-legacy-get|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0tghnagAAAACM3RLWnmd/RL7+pCVDuUYGUEhMMzBFREdFMDIwOABFZGdl
+@@P|PR-legacy-reserve|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0tghnagAAAABekT+yv7iDRatE37r0fr8xUEhMMzBFREdFMDIwOABFZGdl
