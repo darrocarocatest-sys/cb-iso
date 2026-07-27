@@ -1,0 +1,17 @@
+ref=refs/heads/cbdel/d1
+BEFORE: 25 [('refs/heads/main', 'cbmain-a7136383'), ('refs/heads/cbfeat/x1', 'cbmain-a7136383'), ('refs/heads/main-evil', 'cbmain-a7136383'), ('refs/pull/1/merge', 'cbmain-a7136383')]
+DEL by key+ref refs/heads/main -> 200 {
+  "total_count": 1,
+  "actions_caches": [
+    {
+      "id": 6076271791,
+      "ref": "refs/heads/main",
+      "key": "cbmain-a7136383",
+      "version": "5815f4cade2696c8503fee1d72b56e6a4771a264cc27
+DEL by id of a main scoped entry -> 
+  target id= -> 404 {
+  "message": "Not Found",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "404"
+}
+AFTER: 24 [('refs/heads/cbfeat/x1', 'cbmain-a7136383'), ('refs/heads/main-evil', 'cbmain-a7136383'), ('refs/pull/1/merge', 'cbmain-a7136383')]
