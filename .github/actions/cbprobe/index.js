@@ -207,10 +207,11 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
 
   if (MODE === 'restore') {
     // ---- privileged default-branch read of what the fork wrote -------------------
+    const RV = MAINVER || V1;
     const probes = (PROBEKEY || '').split('|').filter(Boolean);
     for (const k of probes) {
-      await twirp('RST-exact-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: V1 });
-      await twirp('RST-prefix-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: 'zzz-miss-' + NONCE, restoreKeys: [k.slice(0, 14)], version: V1 });
+      await twirp('RST-exact-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: k, version: RV });
+      await twirp('RST-prefix-' + k, 'CacheService/GetCacheEntryDownloadURL', { key: 'zzz-miss-' + NONCE, restoreKeys: [k.slice(0, 14)], version: RV });
     }
     if (MAINKEY) await twirp('RST-poscontrol-mainkey', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER || V1 });
     await twirp('RST-negcontrol-never', 'CacheService/GetCacheEntryDownloadURL', { key: 'cbnever-' + NONCE, version: V1 });
