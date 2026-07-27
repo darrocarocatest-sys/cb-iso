@@ -1,0 +1,32 @@
+@@ENV|mode|ns|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/heads/Refs/tags/cbtag2|headref||baseref|
+@@ENV|event|push|sha|f7bdeaddc2fda6ac51eb767500e0e12310c0f1f2|runid|30247174528|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785160408
+@@JWT|runtime|ac|[{"Scope":"refs/heads/Refs/tags/cbtag2","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWT|runtime|scp|Actions.Results:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.Runner:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.UploadArtifacts:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30247174528
+@@JWT|runtime|job_id|5c83554b-8584-5fe0-a93b-a3786153a458
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/ns-probe.yml@refs/heads/Refs/tags/cbtag2
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@JWTALL|runtime|IdentityTypeClaim|System:ServiceIdentity
+@@JWTALL|runtime|ac|[{"Scope":"refs/heads/Refs/tags/cbtag2","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWTALL|runtime|acsl|10
+@@JWTALL|runtime|run_type|full
+@@JWTALL|runtime|runner_type|hosted
+@@JWTALL|runtime|scp|Actions.Results:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.Runner:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.UploadArtifacts:e6b72d7e-be74-48c4-bd6a-3f0c1cb7ec39:5c83554b-8584-5fe0-a93b-a3786153a458 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWTALL|runtime|trust_tier|2
+@@P|NS-reserve-tagkey|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa12.blob.core.windows.net/actions-cache/fb5-6077006780 len=387>","message":""}|req={"key":"cbtagns-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|NS-read-tagkey|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbtagns-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|NS-poscontrol-base|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa10.blob.core.windows.net/actions-cache/9a5-6076952726 len=392>","matched_key":"cbmain-a7136383"}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|NS-negcontrol-never|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|NS-emptyprefix|200|{"ok":true,"signed_download_url":"<SIGNED productionresultssa10.blob.core.windows.net/actions-cache/9a5-6076952726 len=388>","matched_key":"cbmain-a7136383"}|req={"key":"zzz-1785138210208","restoreKeys":[""],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
