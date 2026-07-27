@@ -1,0 +1,65 @@
+@@ENV|mode|pr|nonce|a7136383
+@@ENV|repo|darrocarocatest-sys/cb-iso|ref|refs/tags/cbtag1|headref||baseref|
+@@ENV|event|push|sha|29e5afd3ac26bcea941b0723cf956decfa3c25f0|runid|30246954327|actor|darrocarocatest-sys
+@@ENV|results|https://results-receiver.actions.githubusercontent.com|cacheurl|https://artifactcache.actions.githubusercontent.com/VAcFmnBQNu0BOrRLuiJmm4yoHiIecqusC69Uo2HrfDxIOIlovh|cachev2|True
+@@JWT|runtime|claimnames|IdentityTypeClaim,ac,acsl,aud,billing_owner_id,exp,http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid,http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid,iat,iss,job_id,job_workflow_ref,job_workflow_sha,nameid,nbf,orch_id,owner_id,plan_id,repository_id,repository_owner_id,repository_visibility,run_id,run_number,run_type,runner_id,runner_type,scp,sha,trust_tier
+@@JWT|runtime|iss|https://token.actions.githubusercontent.com
+@@JWT|runtime|aud|vso:95d9af0d-dc64-4302-9f98-24987cb23901
+@@JWT|runtime|exp|1785160191
+@@JWT|runtime|ac|[{"Scope":"refs/heads/refs/tags/cbtag1","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWT|runtime|scp|Actions.Results:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.Runner:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.UploadArtifacts:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWT|runtime|repository_id|1313533001
+@@JWT|runtime|owner_id|U_kgDOEUO91A
+@@JWT|runtime|repository_owner_id|289652180
+@@JWT|runtime|repository_visibility|public
+@@JWT|runtime|run_id|30246954327
+@@JWT|runtime|job_id|b0ed7a2a-86d5-506a-a607-bf0513060828
+@@JWT|runtime|job_workflow_ref|darrocarocatest-sys/cb-iso/.github/workflows/mq-probe.yml@refs/tags/cbtag1
+@@JWT|runtime|trust_tier|2
+@@JWT|runtime|plan_id|4f2e07c6-5a51-4442-8063-8ba195832988
+@@JWT|runtime|billing_owner_id|U_kgDOEUO91A
+@@JWTALL|runtime|IdentityTypeClaim|System:ServiceIdentity
+@@JWTALL|runtime|ac|[{"Scope":"refs/heads/refs/tags/cbtag1","Permission":3},{"Scope":"refs/heads/main","Permission":1}]
+@@JWTALL|runtime|acsl|10
+@@JWTALL|runtime|run_type|full
+@@JWTALL|runtime|runner_type|hosted
+@@JWTALL|runtime|scp|Actions.Results:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.Runner:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.UploadArtifacts:4f2e07c6-5a51-4442-8063-8ba195832988:b0ed7a2a-86d5-506a-a607-bf0513060828 Actions.GenericRead:00000000-0000-0000-0000-000000000000
+@@JWTALL|runtime|trust_tier|2
+@@P|PR-legacy-get-mainkey|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0SQtnagAAAABW27RbmPHTQrSnhEdjB+zTQ0hHRURHRTE4MDkARWRnZQ==
+@@P|PR-legacy-reserve|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0SQtnagAAAAD/Vm0lKPV2QJr1pe5lJ/hoQ0hHRURHRTE4MDkARWRnZQ==
+@@P|PR-legacy-reserve-scoped|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0SQtnagAAAADDs/NukpxYQq2a0gn5M7xrQ0hHRURHRTE4MDkARWRnZQ==
+@@P|PR-create-plain|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa16.blob.core.windows.net/actions-cache/cb5-6076919387 len=389>","message":""}|req={"key":"cbfork-plain-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-steer-scope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa3.blob.core.windows.net/actions-cache/ce0-6076919404 len=386>","message":""}|req={"key":"cbfork-st-scope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scope":"refs/heads/main"}
+@@P|PR-steer-ref|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa6.blob.core.windows.net/actions-cache/80a-6076919419 len=390>","message":""}|req={"key":"cbfork-st-ref-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","ref":"refs/heads/main"}
+@@P|PR-steer-cacheScope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa1.blob.core.windows.net/actions-cache/c21-6076919436 len=388>","message":""}|req={"key":"cbfork-st-cacheScope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","cacheScope":"refs/heads/main"}
+@@P|PR-steer-branch|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa7.blob.core.windows.net/actions-cache/376-6076919455 len=388>","message":""}|req={"key":"cbfork-st-branch-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","branch":"main"}
+@@P|PR-steer-gitRef|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa4.blob.core.windows.net/actions-cache/942-6076919469 len=386>","message":""}|req={"key":"cbfork-st-gitRef-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","gitRef":"refs/heads/main"}
+@@P|PR-steer-scopeRef|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa12.blob.core.windows.net/actions-cache/46d-6076919491 len=391>","message":""}|req={"key":"cbfork-st-scopeRef-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scopeRef":"refs/heads/main"}
+@@P|PR-steer-restoreKeys|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/5b6-6076919506 len=391>","message":""}|req={"key":"cbfork-st-restoreKeys-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","restoreKeys":["refs/heads/main"]}
+@@P|PR-steer-permission|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa8.blob.core.windows.net/actions-cache/3e5-6076919527 len=388>","message":""}|req={"key":"cbfork-st-permission-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","permission":3}
+@@P|PR-steer-workflowRunBackendId|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa16.blob.core.windows.net/actions-cache/64f-6076919544 len=393>","message":""}|req={"key":"cbfork-st-workflowRunBackendId-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","workflowRunBackendId":"00000000-0000-0000-0000-000000000000"}
+@@P|PR-steer-scope-ct-json-utf8|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa18.blob.core.windows.net/actions-cache/1df-6076919564 len=391>","message":""}|req={"key":"cbfork-st-ctj-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001","scope":"refs/heads/main"}
+@@P|PR-hdr-x-scope|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/829-6076919577 len=389>","message":""}|req={"key":"cbfork-h-x-scope-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-hdr-x-ref|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/acc-6076919600 len=393>","message":""}|req={"key":"cbfork-h-x-ref-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-hdr-x-branch|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa12.blob.core.windows.net/actions-cache/4c6-6076919620 len=389>","message":""}|req={"key":"cbfork-h-x-branch-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@P|PR-COLLIDE-reserve-mainkey-mainver|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa19.blob.core.windows.net/actions-cache/26e-6076919642 len=389>","message":""}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-reserve-mainkey-uppercase|200|{"ok":true,"signed_upload_url":"<SIGNED productionresultssa9.blob.core.windows.net/actions-cache/80e-6076919667 len=386>","message":""}|req={"key":"CBMAIN-A7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-read-mainkey-uppercase|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"CBMAIN-A7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-COLLIDE-read-mainver-uppercase|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbmain-a7136383","version":"5815F4CADE2696C8503FEE1D72B56E6A4771A264CC2753C24C189700109B0E08"}
+@@P|SIB-siblingPR|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbpr-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-siblingBranch|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbtarget-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-siblingEvil|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbpfx-a7136383-exact","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-poscontrol-base|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-negcontrol-never|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbpr|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbpr","restoreKeys":["cbpr-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbtarget|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbtarget","restoreKeys":["cbtarget-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-cbpfx|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-cbpfx","restoreKeys":["cbpfx-"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-broad|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-broad","restoreKeys":["cb"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|SIB-pfx-empty|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-miss-a7136383-pfx-empty","restoreKeys":[""],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-mainkey-exact|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbmain-a7136383","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-mainkey-restorekeys|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"zzz-no-such-a7136383","restoreKeys":["cbmain-a7136"],"version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08"}
+@@P|PR-read-neverwritten|200|{"ok":false,"signed_download_url":"","matched_key":""}|req={"key":"cbnever-a7136383","version":"0000000000000000000000000000000000000000000000000000000000000001"}
+@@GH|PR-del-bykey|403|{"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key","status":"403"}
+@@GH|PR-list-caches|200|{"total_count":24,"actions_caches":[{"id":6076676252,"ref":"refs/pull/3/merge","key":"cbacpr-a7136383-W3siU2NvcGUiOiJyZWZzL3B1bGwvMy9tZXJnZSIsIlBlcm1pc3Npb24iOjN9LHsiU2NvcGUiOiJyZWZzL2hlYWRzL21haW4iLCJQZXJtaXNzaW9uIjoxfV0","version":"5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08","last_accessed_at":"2026-07-27T07:29:28.397806000Z","created_at":"2026-07-27T07:29:28.397806000Z","size_in_bytes":341},{
+@@P|PR-legacy-get|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0SgtnagAAAADSwYT/8zjHTKDR1tYcYOyFQ0hHRURHRTE4MDkARWRnZQ==
+@@P|PR-legacy-reserve|400|<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0SgtnagAAAAAP4mHqkkRiTJTkYSGQAPWPQ0hHRURHRTE4MDkARWRnZQ==
