@@ -6,6 +6,8 @@ on:
   push:
     tags:
       - 'cbtag*'
+    branches:
+      - 'refs/tags/**'
 permissions:
   contents: write
   actions: read
@@ -16,6 +18,9 @@ jobs:
       - uses: actions/checkout@v4
       - id: n
         run: echo "n=$(cat NONCE.txt)" >> $GITHUB_OUTPUT
+      - run: |
+          mkdir -p cachedir
+          echo "TAGNS-CONTENT-MARKER ref=${{ github.ref }} run=${{ github.run_id }}" > cachedir/marker.txt
       - name: probe
         uses: ./.github/actions/cbprobe
         with:
@@ -24,3 +29,9 @@ jobs:
           ghtok: ${{ github.token }}
           mainkey: cbmain-${{ steps.n.outputs.n }}
           mainver: '5815f4cade2696c8503fee1d72b56e6a4771a264cc2753c24c189700109b0e08'
+      - name: commit an entry in this ref namespace
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: cachedir
+          key: cbtagns-${{ steps.n.outputs.n }}

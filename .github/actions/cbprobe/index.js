@@ -228,6 +228,10 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
       await twirp('SIB-' + lbl, 'CacheService/GetCacheEntryDownloadURL',
         { key: 'zzz-miss-' + NONCE + '-' + lbl, restoreKeys: [rk], version: RV2 });
     }
+    // 4d. TAG NAMESPACE COLLISION. A tag run receives cache scope refs/heads/refs/tags/<tag>,
+    //     so a BRANCH named refs/tags/<tag> is expected to occupy the same scope string.
+    await twirp('TAGNS-read-tag-entry', 'CacheService/GetCacheEntryDownloadURL', { key: 'cbtagns-' + NONCE, version: MAINVER || V1 });
+    await twirp('TAGNS-reserve-tag-entry', 'CacheService/CreateCacheEntry', { key: 'cbtagns-' + NONCE, version: MAINVER || V1 });
     // 5. read direction: documented as allowed (pr can restore from the base default branch)
     if (MAINKEY) {
       await twirp('PR-read-mainkey-exact', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: MAINVER || V1 });
